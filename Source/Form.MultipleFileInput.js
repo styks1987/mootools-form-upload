@@ -86,6 +86,10 @@ Form.MultipleFileInput = new Class({
 	},
 
 	add: function(file){
+		if(!this.options.multiFile){
+			this._files = Array();
+			this.list.getElements('li').dispose();
+		}
 		this._files.push(file);
 		var self = this;
 		new Element('li', {
