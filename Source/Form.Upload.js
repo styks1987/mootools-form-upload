@@ -18,6 +18,7 @@ Form.Upload = new Class({
 	Implements: [Options, Events],
 
 	options: {
+		multiFile: true,
 		dropMsg: 'Please drop your files here',
 		onComplete: function(){
 			// reload
@@ -54,6 +55,7 @@ Form.Upload = new Class({
 				.setStyle('display', 'none').inject(list, 'after'),
 
 			inputFiles = new Form.MultipleFileInput(input, list, drop, {
+				multiFile: this.options.multiFile,
 				onDragenter: drop.addClass.pass('hover', drop),
 				onDragleave: drop.removeClass.pass('hover', drop),
 				onDrop: drop.removeClass.pass('hover', drop)
