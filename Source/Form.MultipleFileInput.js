@@ -23,6 +23,7 @@ Form.MultipleFileInput = new Class({
 	Implements: [Options, Events],
 
 	options: {
+		multiFile:true,
 		itemClass: 'uploadItem'/*,
 		onAdd: function(file){},
 		onRemove: function(file){},
@@ -43,8 +44,11 @@ Form.MultipleFileInput = new Class({
 		this.setOptions(options);
 
 		var name = input.get('name');
-		if (name.slice(-2) != '[]') input.set('name', name + '[]');
-		input.set('multiple', true);
+		
+		if(this.options.multiFile){
+			if (name.slice(-2) != '[]') input.set('name', name + '[]');
+			input.set('multiple', false);
+		}
 
 		this.inputEvents = {
 			change: function(){
